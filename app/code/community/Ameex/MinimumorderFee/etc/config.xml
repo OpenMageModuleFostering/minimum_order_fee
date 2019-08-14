@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Ameex_MinimumorderFee>
-			<version>0.1.1</version>
+			<version>0.1.2</version>
 		</Ameex_MinimumorderFee>
 	</modules>
 	<frontend>
@@ -13,6 +13,15 @@
 				</minimumorderfee>
 			</updates>
 		</layout>
+		<routers>
+			<checkout>
+				<args>
+					<modules>
+						<ameex_minimumorderfee before="Mage_Checkout">Ameex_MinimumorderFee</ameex_minimumorderfee>
+					</modules>
+				</args>
+			</checkout>
+			</routers>
 	</frontend>
 	<global>
 		<blocks>
@@ -21,6 +30,11 @@
 			</minimumorderfee>
 		</blocks>
 		<models>
+			<sales>
+				<rewrite>
+					<quote_address>Ameex_MinimumorderFee_Model_Sales_Quote_Address</quote_address>
+				</rewrite>
+			</sales>
 			<minimumorderfee>
 				<class>Ameex_MinimumorderFee_Model</class>
 				<resourceModel>ameex_minimumorderfee_resource</resourceModel>
