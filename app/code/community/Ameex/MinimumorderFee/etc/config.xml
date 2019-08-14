@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Ameex_MinimumorderFee>
-			<version>0.1.6</version>
+			<version>0.1.7</version>
 		</Ameex_MinimumorderFee>
 	</modules>
 	<frontend>
@@ -100,6 +100,17 @@
 				<class>Ameex_MinimumorderFee_Helper</class>
 			</minimumorderfee>
 		</helpers>
+		<events>  
+				<paypal_prepare_line_items>
+                <observers>
+                    <minimumorderfee>
+                        <type>singleton</type>
+                        <class>minimumorderfee/observer</class>
+                        <method>addScreenToPayPal</method>
+                    </minimumorderfee>
+                </observers>
+            </paypal_prepare_line_items>
+        </events>
 	</global>
 	<adminhtml>
 		<layout>

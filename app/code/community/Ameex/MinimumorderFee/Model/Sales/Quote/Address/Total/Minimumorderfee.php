@@ -1,6 +1,6 @@
 <?php
 class Ameex_MinimumorderFee_Model_Sales_Quote_Address_Total_Minimumorderfee extends Mage_Sales_Model_Quote_Address_Total_Abstract{
-	protected $minimumfeeTiers=array(0=>10,5=>20,10=>30,);
+	//protected $minimumfeeTiers=array(0=>10,5=>20,10=>30,);
 	public function __construct(){
 		$this->setCode('minimumorderfee');
 	}
@@ -38,18 +38,26 @@ class Ameex_MinimumorderFee_Model_Sales_Quote_Address_Total_Minimumorderfee exte
 				case 1 :
 					$address->setBaseCustomFeeAmount($minimumorderfee);
 					$address->setCustomFeeAmount($minimumorderfee);
-					$this->_addBaseAmount($minimumorderfee);
-					$this->_addAmount($minimumorderfee);
-					return $this;
+					//$this->_addBaseAmount($minimumorderfee);
+					//$this->_addAmount($minimumorderfee);
+					//return $this;
+					 $quote->setCustomFeeAmount($minimumorderfee);
+ 
+            $address->setGrandTotal($address->getGrandTotal() + $address->getCustomFeeAmount());
+            $address->setBaseGrandTotal($address->getBaseGrandTotal() + $address->getBaseCustomFeeAmount());
 					break;
 				case 2 :
 					/* case 2 is for percentage of fixed amount */
 				$percentcalculation=$subtotal*($minimumorderfee/100);
 				$address->setBaseCustomFeeAmount($percentcalculation);
 				$address->setCustomFeeAmount($percentcalculation);
-				$this->_addBaseAmount($percentcalculation);
-				$this->_addAmount($percentcalculation);
-				return $this;
+				//$this->_addBaseAmount($percentcalculation);
+				//$this->_addAmount($percentcalculation);
+				//return $this;
+				 $quote->setCustomFeeAmount($percentcalculation);
+ 
+            $address->setGrandTotal($address->getGrandTotal() + $address->getCustomFeeAmount());
+            $address->setBaseGrandTotal($address->getBaseGrandTotal() + $address->getBaseCustomFeeAmount());
 
 			}
 		}
