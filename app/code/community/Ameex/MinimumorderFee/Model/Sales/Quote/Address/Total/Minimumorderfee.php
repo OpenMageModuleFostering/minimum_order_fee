@@ -14,9 +14,23 @@ class Ameex_MinimumorderFee_Model_Sales_Quote_Address_Total_Minimumorderfee exte
         }
         $quote = $address->getQuote();
 		$minimumorderfee=Mage::getStoreConfig('sales/minimum_order/minimumfee');
-		$subtotal=$address->getSubtotal();
 		$isMinAmt= Mage::getStoreConfig('sales/minimum_order/amount', Mage::app()->getStore()->getId());
 		$isMinAmtActive= Mage::getStoreConfig('sales/minimum_order/active', Mage::app()->getStore()->getId());
+		$subtotalcalculation=Mage::getStoreConfig('sales/minimum_order/subtotalcalculation', Mage::app()->getStore()->getId());
+		switch($subtotalcalculation)
+		{
+			case 1:
+				$subtotal=$address->getSubtotal();
+				break;
+			case 2:
+				$firstsubtotal=$address->getSubtotal();
+				$tax=$address->getTaxAmount();
+				$subtotal=$firstsubtotal+$tax;
+				break;
+			case 3:
+			   $subtotal=$address->getSubtotalWithDiscount();
+				break;
+		}
 		if($isMinAmtActive==1 && $subtotal<$isMinAmt){
 			$feecalculation=Mage::getStoreConfig('sales/minimum_order/feecalculation', Mage::app()->getStore()->getId());
 			switch($feecalculation){
