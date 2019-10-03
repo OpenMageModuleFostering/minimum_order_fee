@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/minimum_order_fee",
+    "name": "openmage-module-fostering\/minimum_order_fee",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "MinimumorderFee Module is used to apply fee for the minimum order.",
     "authors": [
