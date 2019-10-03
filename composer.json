@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/minimum_order_fee",
+    "name": "OpenMageModuleFostering\/minimum_order_fee",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
     "description": "MinimumorderFee Module is used to apply fee for the minimum order.",
     "authors": [
-    {
-        "name": "commercebees",
-        "email": "commercebees@ameexusa.com"
-    }
-],
+        {
+            "name": "commercebees",
+            "email": "commercebees@ameexusa.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
